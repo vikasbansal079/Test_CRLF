@@ -33,8 +33,8 @@ pipeline{
 					label: 'Docker NPM Build',
 					script: """
 						chmod -R 755 ${env.WORKSPACE}/${env.BUILD_SCRIPT_PATH}
-						sed -i 's/\r$//g' ${env.WORKSPACE}/dockerfile
-						sed -i 's/\r$//g' ${env.WORKSPACE}/${env.BUILD_SCRIPT_PATH}
+						sed -i 's/^M//g' ${env.WORKSPACE}/dockerfile
+						sed -i 's/^M//g' ${env.WORKSPACE}/${env.BUILD_SCRIPT_PATH}
 						${env.WORKSPACE}/${env.BUILD_SCRIPT_PATH}
 					"""
 				)
