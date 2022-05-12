@@ -5,6 +5,9 @@ pipeline{
 		timeout(time:1, unit: 'HOURS')
 		timestamps()
 	}
+	tools {
+		git 'Default'
+	}
 	environmeny{
 		BUILD_SCRIPT_PATH = 'docker_build.sh'
 		DOCKER_BUILD_TARGET = 'compile'
