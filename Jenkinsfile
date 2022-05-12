@@ -8,7 +8,7 @@ pipeline{
 	environment{
 		BUILD_SCRIPT_PATH = 'docker_build.sh'
 		DOCKER_BUILD_TARGET = 'compile'
-		DOCKER_IMAGE_TAG = "soti-signal:${BUILD_NUMBER}"
+		DOCKER_IMAGE_TAG = "soti-signal:${env.BUILD_NUMBER}"
 	}
 	stages{
 		stage('Compile')
