@@ -1,5 +1,5 @@
 pipeline{
-	agent { label "CentOS7" }
+	agent none
 	options{
 		buildDiscarder(logRotator(numToKeepStr: '10'))
 		timeout(time:1, unit: 'HOURS')
@@ -13,6 +13,7 @@ pipeline{
 	stages{
 		stage('Compile')
 		{
+			agent { label "CentOS7" }
 			steps{				
 				sh(
 					label: 'Docker NPM Build',
