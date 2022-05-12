@@ -22,7 +22,7 @@ pipeline{
 		}
 		stage('Compile')
 		{
-			agent { label "CentOS7" }
+			agent { label "Ubuntu2" }
 			options{
 				skipDefaultCheckout()
 			}
