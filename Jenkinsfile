@@ -5,10 +5,7 @@ pipeline{
 		timeout(time:1, unit: 'HOURS')
 		timestamps()
 	}
-	tools {
-		git 'Default'
-	}
-	environmeny{
+	environment{
 		BUILD_SCRIPT_PATH = 'docker_build.sh'
 		DOCKER_BUILD_TARGET = 'compile'
 		DOCKER_IMAGE_TAG = "soti-signal:${BUILD_NUMBER}"
