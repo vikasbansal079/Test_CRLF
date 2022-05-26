@@ -16,8 +16,11 @@ pipeline{
 			agent {label "master"}
 			steps{
 				cleanWs()
-				checkout scm
-				stash includes: "**", name: 'SourceCode'
+				script{
+					commitdetails = checkout scm
+					commitdetails.dump()
+					stash includes: "**", name: 'SourceCode'
+				}
 			}
 		}
 		stage('Compile')
@@ -26,7 +29,7 @@ pipeline{
 			options{
 				skipDefaultCheckout()
 			}
-			steps{				
+			steps{
 				cleanWs()
 				unstash 'SourceCode'
 				sh(
