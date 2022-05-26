@@ -14,7 +14,7 @@ pipeline{
 	environment{
 		BUILD_SCRIPT_PATH = 'docker_build.sh'
 		DOCKER_BUILD_TARGET = 'compile'
-		DOCKER_IMAGE_TAG = "soti-signal:${env.BUILD_NUMBER}"
+		DOCKER_IMAGE_NAME = "soti-signal:${env.BUILD_NUMBER}"
 	}
 	stages{
 		stage('Checkout'){
@@ -27,6 +27,7 @@ pipeline{
 					println commitdetails.GIT_COMMIT
 					CommitHash = commitdetails.GIT_COMMIT.substring(0,6)
 					println CommitHash
+					env.DOCKER_IMAGE_TAG = "${env.DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER}.${CommitHash}"
 					stash includes: "**", name: 'SourceCode'
 				}
 			}
