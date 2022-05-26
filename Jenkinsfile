@@ -18,7 +18,7 @@ pipeline{
 				cleanWs()
 				script{
 					commitdetails = checkout scm
-					commitdetails.dump()
+					println commitdetails.dump()
 					stash includes: "**", name: 'SourceCode'
 				}
 			}
